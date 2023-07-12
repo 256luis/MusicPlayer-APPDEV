@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class MusicPlayer extends JFrame {
@@ -7,9 +8,11 @@ public class MusicPlayer extends JFrame {
     SongPlaying songPlaying;
     CardLayout cl;
     
+    SQLiteJDBC db;
+    
     public MusicPlayer() {
         super("Music Player");
-        setSize(1280, 720);
+        setSize(640, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         cl = new CardLayout();
@@ -17,6 +20,10 @@ public class MusicPlayer extends JFrame {
         
         songSelect = new SongSelect();
         songPlaying = new SongPlaying();
+        
+        db = new SQLiteJDBC();
+        
+        ArrayList<Song> songs = db.getSongs();
         
         add(songSelect, "SongSelect");
         add(songPlaying, "SongPlaying");
