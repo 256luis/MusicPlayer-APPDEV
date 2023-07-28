@@ -1,3 +1,5 @@
+package Main;
+
 public class Song {
     public String artist;
     public String name;
