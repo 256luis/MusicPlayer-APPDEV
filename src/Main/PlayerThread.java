@@ -33,7 +33,7 @@ public class PlayerThread extends Thread {
         }
     }
     
-    public void close(){
+    public void close() {
         player.close();
         this.interrupt();
     }

@@ -31,6 +31,7 @@ public class SongController {
     
     public void pause() {
         elapsedTimeMs = System.currentTimeMillis() - startTimeMs;
+        playerThread.close();
     }
     
     public void setTime() {

@@ -94,17 +94,10 @@ public class MusicPlayer extends JFrame {
             System.out.println("Artist: " + s.artist + ", Song Name: " + s.name + ", Length: " + s.lengthSec + " seconds");
         }
         
-//        
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception e) {
-//            
-//        }
-//        
         songController.loadSongByID(2);
         songController.play();
-        
-} 
+
+    } 
     // Method to switch between panels
     public void switchToPanel(String panelName) {
         // Show the specified panel using CardLayout
