@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import javax.swing.border.Border;
 
 public class SongPanel extends JPanel {
-    public SongPanel(ArrayList<Song> songs) {        
+    private SongController songController;
+    
+    public SongPanel(ArrayList<Song> songs, SongController songController) {
+        this.songController = songController;
+        
         Color color = new Color(33, 35, 36);
         setBackground(color);
 
@@ -39,7 +43,7 @@ public class SongPanel extends JPanel {
             Song song = songs.get(i);
             JLabel songLabel = (JLabel) songLabelsPanel.getComponent(i + 1); // Skip the "Featured Songs" label
             songLabel.setText(song.name);
-            songLabel.addMouseListener(new SongLabelMouseListener(songLabel));
+            songLabel.addMouseListener(new SongLabelMouseListener(songLabel, song.id));
         }
 
         // Make the panel scrollable
@@ -67,15 +71,18 @@ public class SongPanel extends JPanel {
     // Custom MouseListener for the song labels
     private class SongLabelMouseListener extends MouseAdapter {
         private final JLabel label;
+        private final int songId;
 
-        public SongLabelMouseListener(JLabel label) {
+        public SongLabelMouseListener(JLabel label, int songId) {
             this.label = label;
+            this.songId = songId;
         }
 
         @Override
         public void mouseClicked(MouseEvent e) {
             // Handle the click event
             highlightSelectedSong(label);
+            songController.loadSongByID(songId);
         }
 
         @Override

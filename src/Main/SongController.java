@@ -16,6 +16,10 @@ public class SongController {
     }
     
     public void loadSongByID(int id) {
+        if (playerThread != null && playerThread.isAlive()) {
+            playerThread.close();
+        }
+        
         currentSong = db.getSongByID(id);
     }
     
@@ -31,7 +35,9 @@ public class SongController {
     
     public void pause() {
         elapsedTimeMs = System.currentTimeMillis() - startTimeMs;
-        playerThread.close();
+        if (playerThread.isAlive()) {
+            playerThread.close();
+        }
     }
     
     public void setTime() {

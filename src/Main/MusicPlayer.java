@@ -52,7 +52,7 @@ public class MusicPlayer extends JFrame {
         songController = new SongController();
         ArrayList<Song> songs = songController.getSongs();
 
-        songPanel = new SongPanel(songs);
+        songPanel = new SongPanel(songs, songController);
         playPanel = new PlayPanel();
         searchPanel = new SearchPanel();
 
@@ -93,10 +93,6 @@ public class MusicPlayer extends JFrame {
         for (Song s : songs) {
             System.out.println("Artist: " + s.artist + ", Song Name: " + s.name + ", Length: " + s.lengthSec + " seconds");
         }
-        
-        songController.loadSongByID(2);
-        songController.play();
-
     } 
     // Method to switch between panels
     public void switchToPanel(String panelName) {
