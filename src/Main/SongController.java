@@ -1,3 +1,7 @@
+package Main;
+
+import java.util.ArrayList;
+
 public class SongController {
     private Song currentSong;
     private SongsDB db = new SongsDB();
@@ -10,15 +14,19 @@ public class SongController {
     
     public void loadSongByID(int id) {
         currentSong = db.getSongByID(id);
+        playerThread = new PlayerThread(currentSong);
+    }
+    
+    public ArrayList<Song> getSongs() {
+        return db.getSongs();
     }
     
     public void play() {
-        playerThread = new PlayerThread(currentSong);
         playerThread.start();
     }
     
     public void pause() {
-        playerThread.stop();
+        playerThread.pause();
     }
     
     public void resume() {

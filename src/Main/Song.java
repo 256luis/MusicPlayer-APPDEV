@@ -1,3 +1,5 @@
+package Main;
+
 public class Song {
     public static final float FRAME_TIME = 0.026f;
     

@@ -1,3 +1,5 @@
+package Main;
+
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import java.io.FileInputStream;
@@ -12,6 +14,7 @@ public class PlayerThread extends Thread {
     
     private long startTimeMs = 0;
     private long endTimeMs = 0;
+    private long timeElapsed = 0;
     
     public PlayerThread(Song song) {
         this.song = song;
@@ -24,11 +27,12 @@ public class PlayerThread extends Thread {
     }
     
     public void run() {
+        System.out.println("in run");
         try {
-            long timeStart = System.currentTimeMillis();
-            System.out.println(timeStart);
-            int start = 0;
-            player.play(start, song.lengthFrames);
+            startTimeMs = System.currentTimeMillis();
+            int startFrame = (int)(timeElapsed / Song.FRAME_TIME);
+            
+            player.play(startFrame, song.lengthFrames);
         } catch (Exception e) {
             System.out.println("Error occurred when playing the file");
         }
@@ -36,6 +40,9 @@ public class PlayerThread extends Thread {
     
     public void pause() {
         endTimeMs = System.currentTimeMillis();
+        timeElapsed = endTimeMs - startTimeMs;
+        System.out.println(timeElapsed);
+        this.close();
     }
     
     public void cont() {

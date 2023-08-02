@@ -1,3 +1,5 @@
+package Main;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -71,5 +73,9 @@ public class SongsDB {
         }
         
         return null;
+    }
+    
+    public ArrayList<Song> getSongs() {
+        return songs;
     }
 }
