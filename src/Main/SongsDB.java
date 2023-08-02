@@ -19,7 +19,7 @@ public class SongsDB {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:songs.db");
-        
+            
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(1);
@@ -38,7 +38,8 @@ public class SongsDB {
                         rs.getString("song_name"),
                         rs.getInt("song_length"),
                         rs.getInt("id"),
-                        rs.getString("file_path")
+                        rs.getString("file_path"),
+                        rs.getString("lyrics_path")
                 );
 //                
                 // System.out.printf("%s\n", rs.getString("song_name"));

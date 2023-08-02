@@ -16,6 +16,9 @@ public class SongController {
     }
     
     public void loadSongByID(int id) {
+        elapsedTimeMs = 0;
+        startTimeMs = 0;
+        
         if (playerThread != null && playerThread.isAlive()) {
             playerThread.close();
         }
@@ -34,7 +37,7 @@ public class SongController {
     }
     
     public void pause() {
-        elapsedTimeMs = System.currentTimeMillis() - startTimeMs;
+        elapsedTimeMs += System.currentTimeMillis() - startTimeMs;
         if (playerThread.isAlive()) {
             playerThread.close();
         }

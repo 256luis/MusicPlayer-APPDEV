@@ -53,7 +53,7 @@ public class MusicPlayer extends JFrame {
         ArrayList<Song> songs = songController.getSongs();
 
         songPanel = new SongPanel(songs, songController);
-        playPanel = new PlayPanel();
+        playPanel = new PlayPanel(songController);
         searchPanel = new SearchPanel();
 
         // Set the background color of the panels to black gray

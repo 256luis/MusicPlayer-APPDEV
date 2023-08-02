@@ -1,5 +1,7 @@
 package GUI;
 
+import Main.SongController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,12 +9,16 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 
 public class PlayPanel extends JPanel implements ActionListener {
-    
-        private JButton stopButton = new JButton("Stop");
-        private JButton playButton = new JButton("Play");
-        private JButton pauseButton = new JButton("Pause");
 
-    public PlayPanel() {
+    private JButton stopButton = new JButton("Stop");
+    private JButton playButton = new JButton("Play");
+    private JButton pauseButton = new JButton("Pause");
+
+    private SongController songController;
+    
+    public PlayPanel(SongController songController) {
+        this.songController = songController;
+        
         // Create title panel at the top with a gradient background
         JPanel titlePanel = new JPanel() {
             @Override
@@ -85,17 +91,17 @@ public class PlayPanel extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-                // Get the button that was clicked
-                JButton button = (JButton) e.getSource();
+        // Get the button that was clicked
+        JButton button = (JButton) e.getSource();
 
-                // Do something based on the button that was clicked
-                if (button == stopButton) {
-                    System.out.println("Stop button clicked");
-                } else if (button == playButton) {
-                    System.out.println("Play button clicked");
-                } else if (button == pauseButton) {
-                    System.out.println("Pause button clicked");
-                }
+        // Do something based on the button that was clicked
+        if (button == stopButton) {
+            System.out.println("Stop button clicked");
+        } else if (button == playButton) {
+            songController.play();
+        } else if (button == pauseButton) {
+            songController.pause();
+        }
     }
     
 }
