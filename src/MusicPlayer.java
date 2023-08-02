@@ -3,12 +3,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class MusicPlayer extends JFrame {
-
-    SongSelect songSelect;
-    SongPlaying songPlaying;
     CardLayout cl;
     
-    SQLiteJDBC db;
+    SongController songController;
     
     public MusicPlayer() {
         super("Music Player");
@@ -18,17 +15,22 @@ public class MusicPlayer extends JFrame {
         cl = new CardLayout();
         setLayout(cl);
         
-        songSelect = new SongSelect();
-        songPlaying = new SongPlaying();
-        
-        db = new SQLiteJDBC();
-        
-        ArrayList<Song> songs = db.getSongs();
-        
-        add(songSelect, "SongSelect");
-        add(songPlaying, "SongPlaying");
-        
         setVisible(true);
+        
+        songController = new SongController();
+        songController.loadSongByID(2);
+        songController.play();
+//        
+        try {
+            Thread.sleep(2500);
+            songController.pause();
+            Thread.sleep(500);
+            songController.play();
+        } catch (Exception e) {
+            
+        }
+        
+        
     }
     
     public static void main(String[] args) {
