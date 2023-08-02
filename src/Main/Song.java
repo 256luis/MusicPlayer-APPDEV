@@ -18,4 +18,5 @@ public class Song {
         this.path = path;
         
         this.lengthFrames = (int)(length / FRAME_TIME);
+    }
 }
