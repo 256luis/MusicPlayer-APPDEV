@@ -104,7 +104,7 @@ public class PlayPanel extends JPanel implements ActionListener {
 
         // Do something based on the button that was clicked
         if (button == stopButton) {
-            System.out.println("Stop button clicked");
+            songController.stop();
         } else if (button == playButton) {
             songController.play();
         } else if (button == pauseButton) {

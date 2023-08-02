@@ -93,4 +93,13 @@ insert into songs values (
        'songs/Halik.mp3',
        'lyrics/Halik.txt'
 );
+              
+insert into songs values (
+       10,
+       'Anderson .Paak',
+       'Heart Don''t Stand a Chance',
+       222,
+       'songs/Heart Don''t Stand a Chance.mp3',
+       'lyrics/Heart Don''t Stand a Chance.txt'
+);
        

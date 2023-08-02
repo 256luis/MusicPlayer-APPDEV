@@ -85,7 +85,9 @@ public class SongPanel extends JPanel {
             // Handle the click event
             highlightSelectedSong(label);
             songController.loadSongByID(songId);
+            songController.play();
             playPanel.refreshLabels();
+            
         }
 
         @Override

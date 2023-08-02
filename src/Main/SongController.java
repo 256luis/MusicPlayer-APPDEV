@@ -11,6 +11,14 @@ public class SongController {
     long elapsedTimeMs = 0;
     long startTimeMs = 0;
     
+    private int PAUSED = 0;
+    private int PLAYING = 1;
+    private int STOPPED = 2;
+    
+    int state = STOPPED;
+    
+    boolean isReady = false;
+    
     public SongController() {   
     
     }
@@ -24,6 +32,9 @@ public class SongController {
         }
         
         currentSong = db.getSongByID(id);
+        
+        state = STOPPED;
+        isReady = true;
     }
     
     public ArrayList<Song> getSongs() {
@@ -31,16 +42,25 @@ public class SongController {
     }
     
     public void play() {
+        if (state == PLAYING) return;
+        
+        state = PLAYING;
+        
         startTimeMs = System.currentTimeMillis();
         playerThread = new PlayerThread(currentSong, elapsedTimeMs);
         playerThread.start();
     }
     
     public void pause() {
+        if (state == PAUSED) return;
+        
+        state = PAUSED;
+        
         elapsedTimeMs += System.currentTimeMillis() - startTimeMs;
         if (playerThread.isAlive()) {
             playerThread.close();
         }
+        
     }
     
     public void setTime() {
@@ -52,6 +72,15 @@ public class SongController {
     }
     
     public void stop() {
-        playerThread.close();
+        if (state == STOPPED) return;
+        
+        state = STOPPED;
+        
+        elapsedTimeMs = 0;
+        startTimeMs = 0;
+        
+        if (playerThread != null && playerThread.isAlive()) {
+            playerThread.close();
+        }
     }
 }
