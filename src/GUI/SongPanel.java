@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import javax.swing.border.Border;
 
 public class SongPanel extends JPanel {
-    public SongPanel(ArrayList<Song> songs) {
-        
+    public SongPanel(ArrayList<Song> songs) {        
         Color color = new Color(33, 35, 36);
         setBackground(color);
 
@@ -77,7 +76,6 @@ public class SongPanel extends JPanel {
         public void mouseClicked(MouseEvent e) {
             // Handle the click event
             highlightSelectedSong(label);
-            
         }
 
         @Override

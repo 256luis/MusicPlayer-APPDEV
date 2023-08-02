@@ -51,6 +51,7 @@ public class MusicPlayer extends JFrame {
         // Pass the list of songs to the SongPanel constructor
         songController = new SongController();
         ArrayList<Song> songs = songController.getSongs();
+
         songPanel = new SongPanel(songs);
         playPanel = new PlayPanel();
         searchPanel = new SearchPanel();
@@ -111,7 +112,6 @@ public class MusicPlayer extends JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
 } 
     // Method to switch between panels
     public void switchToPanel(String panelName) {

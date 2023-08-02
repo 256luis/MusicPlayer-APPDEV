@@ -9,8 +9,7 @@ public class Song {
     public int lengthFrames;
     public int id;
     public String path;
-    
-    
+
     public Song(String artist, String name, int length, int id, String path) {
         this.artist = artist;
         this.name = name;
@@ -19,5 +18,4 @@ public class Song {
         this.path = path;
         
         this.lengthFrames = (int)(length / FRAME_TIME);
-    }
 }
