@@ -16,6 +16,9 @@ public class PlayPanel extends JPanel implements ActionListener {
 
     private SongController songController;
     
+    private JLabel titleLabel;
+    private JLabel lyricsLabel;
+    
     public PlayPanel(SongController songController) {
         this.songController = songController;
         
@@ -32,7 +35,7 @@ public class PlayPanel extends JPanel implements ActionListener {
                 g2d.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        JLabel titleLabel = new JLabel("Title of the Song");
+        titleLabel = new JLabel("Title of the Song");
         titleLabel.setForeground(Color.WHITE);
         titlePanel.add(titleLabel);
 
@@ -51,7 +54,7 @@ public class PlayPanel extends JPanel implements ActionListener {
         };
         
         
-        JLabel lyricsLabel = new JLabel("Lyrics of the Song");
+        lyricsLabel = new JLabel("Lyrics of the Song");
         lyricsLabel.setForeground(Color.WHITE);
         lyricsPanel.add(lyricsLabel);
         
@@ -87,7 +90,12 @@ public class PlayPanel extends JPanel implements ActionListener {
         
         add(controlPanel);
      
-  }
+    }
+    
+    public void refreshLabels() {
+        lyricsLabel.setText(songController.getCurrentSong().lyrics);
+        titleLabel.setText(songController.getCurrentSong().name);
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -11,8 +11,8 @@ public class SongController {
     long elapsedTimeMs = 0;
     long startTimeMs = 0;
     
-    public SongController() {
-        
+    public SongController() {   
+    
     }
     
     public void loadSongByID(int id) {
@@ -45,6 +45,10 @@ public class SongController {
     
     public void setTime() {
         // todo
+    }
+    
+    public Song getCurrentSong() {
+        return currentSong;
     }
     
     public void stop() {

@@ -11,9 +11,11 @@ import javax.swing.border.Border;
 
 public class SongPanel extends JPanel {
     private SongController songController;
+    private PlayPanel playPanel;
     
-    public SongPanel(ArrayList<Song> songs, SongController songController) {
+    public SongPanel(ArrayList<Song> songs, SongController songController, PlayPanel playPanel) {
         this.songController = songController;
+        this.playPanel = playPanel;
         
         Color color = new Color(33, 35, 36);
         setBackground(color);
@@ -83,6 +85,7 @@ public class SongPanel extends JPanel {
             // Handle the click event
             highlightSelectedSong(label);
             songController.loadSongByID(songId);
+            playPanel.refreshLabels();
         }
 
         @Override
