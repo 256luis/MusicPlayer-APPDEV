@@ -8,13 +8,15 @@ public class SongController {
     
     private PlayerThread playerThread;
     
+    long elapsedTimeMs = 0;
+    long startTimeMs = 0;
+    
     public SongController() {
         
     }
     
     public void loadSongByID(int id) {
         currentSong = db.getSongByID(id);
-        playerThread = new PlayerThread(currentSong);
     }
     
     public ArrayList<Song> getSongs() {
@@ -22,15 +24,13 @@ public class SongController {
     }
     
     public void play() {
+        startTimeMs = System.currentTimeMillis();
+        playerThread = new PlayerThread(currentSong, elapsedTimeMs);
         playerThread.start();
     }
     
     public void pause() {
-        playerThread.pause();
-    }
-    
-    public void resume() {
-        playerThread.cont();
+        elapsedTimeMs = System.currentTimeMillis() - startTimeMs;
     }
     
     public void setTime() {

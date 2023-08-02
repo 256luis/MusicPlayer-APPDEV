@@ -104,14 +104,6 @@ public class MusicPlayer extends JFrame {
         songController.loadSongByID(2);
         songController.play();
         
-        try {
-            Thread.sleep(2000);
-            songController.pause();
-            Thread.sleep(2000);
-            songController.play();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
 } 
     // Method to switch between panels
     public void switchToPanel(String panelName) {
