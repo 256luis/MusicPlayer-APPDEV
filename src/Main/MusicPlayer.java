@@ -25,7 +25,7 @@ public class MusicPlayer extends JFrame {
     PlayPanel playPanel;
     SearchPanel searchPanel;
 
-    SQLiteJDBC db;
+    SongController songController;
 
     public MusicPlayer() {
         super("Music Player");
@@ -49,8 +49,9 @@ public class MusicPlayer extends JFrame {
         // Create the panels
         menuPanel = new MenuPanel(this);
         // Pass the list of songs to the SongPanel constructor
-        db = new SQLiteJDBC();
-        ArrayList<Song> songs = db.getSongs();
+        songController = new SongController();
+        ArrayList<Song> songs = songController.getSongs();
+
         songPanel = new SongPanel(songs);
         playPanel = new PlayPanel();
         searchPanel = new SearchPanel();
@@ -90,7 +91,26 @@ public class MusicPlayer extends JFrame {
         setVisible(true);
 
         for (Song s : songs) {
-            System.out.println("Artist: " + s.artist + ", Song Name: " + s.name + ", Length: " + s.length + " seconds");
+            System.out.println("Artist: " + s.artist + ", Song Name: " + s.name + ", Length: " + s.lengthSec + " seconds");
+        }
+        
+//        
+//        try {
+//            Thread.sleep(2000);
+//        } catch (Exception e) {
+//            
+//        }
+//        
+        songController.loadSongByID(2);
+        songController.play();
+        
+        try {
+            Thread.sleep(2000);
+            songController.pause();
+            Thread.sleep(2000);
+            songController.play();
+        } catch (Exception e) {
+            System.out.println(e);
         }
 } 
     // Method to switch between panels

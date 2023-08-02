@@ -1,6 +1,6 @@
 package GUI;
 
-import Main.Song;
+import Main.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import javax.swing.border.Border;
 
 public class SongPanel extends JPanel {
-
-    public SongPanel(ArrayList<Song> songs) {
+    public SongPanel(ArrayList<Song> songs) {        
         Color color = new Color(33, 35, 36);
         setBackground(color);
 

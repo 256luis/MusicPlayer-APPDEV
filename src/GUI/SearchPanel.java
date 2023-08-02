@@ -28,4 +28,3 @@ public class SearchPanel extends JPanel {
         add(searchLabel);
     }
 }
-
