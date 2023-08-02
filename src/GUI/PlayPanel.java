@@ -2,9 +2,15 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 
-public class PlayPanel extends JPanel {
+public class PlayPanel extends JPanel implements ActionListener {
+    
+        private JButton stopButton = new JButton("Stop");
+        private JButton playButton = new JButton("Play");
+        private JButton pauseButton = new JButton("Pause");
 
     public PlayPanel() {
         // Create title panel at the top with a gradient background
@@ -47,9 +53,9 @@ public class PlayPanel extends JPanel {
         Color panelColor = new Color(27, 27, 27);
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         controlPanel.setBackground(panelColor);
-        JButton stopButton = new JButton("Stop");
-        JButton playButton = new JButton("Play");
-        JButton pauseButton = new JButton("Pause");
+        stopButton.addActionListener(this);
+        playButton.addActionListener(this);
+        pauseButton.addActionListener(this);
         stopButton.setForeground(Color.WHITE);
         playButton.setForeground(Color.WHITE);
         pauseButton.setForeground(Color.WHITE);
@@ -74,5 +80,22 @@ public class PlayPanel extends JPanel {
         titlePanel.setMaximumSize(new Dimension(controlPanel.getMaximumSize().width, 120));
         
         add(controlPanel);
+     
+  }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+                // Get the button that was clicked
+                JButton button = (JButton) e.getSource();
+
+                // Do something based on the button that was clicked
+                if (button == stopButton) {
+                    System.out.println("Stop button clicked");
+                } else if (button == playButton) {
+                    System.out.println("Play button clicked");
+                } else if (button == pauseButton) {
+                    System.out.println("Pause button clicked");
+                }
     }
+    
 }

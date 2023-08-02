@@ -68,6 +68,8 @@ public class SongPanel extends JPanel {
     // Custom MouseListener for the song labels
     private class SongLabelMouseListener extends MouseAdapter {
         private final JLabel label;
+        
+   
 
         public SongLabelMouseListener(JLabel label) {
             this.label = label;
